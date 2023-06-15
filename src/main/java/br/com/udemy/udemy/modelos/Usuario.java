@@ -1,11 +1,13 @@
 package br.com.udemy.udemy.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -24,6 +26,10 @@ public class Usuario {
     private String telefone;
     private String senha;
     private Date data = new Date();
+    @OneToMany
+    @JoinColumn(name = "cod_pedido")
+    @JsonIgnore
+    private List<Pedido> pedidos;
 
     public Usuario(String nome, String email, String telefone, String senha) {
         this.nome = nome;
