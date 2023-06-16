@@ -19,13 +19,7 @@ public class PaginaPrincipal {
         return "cadastrar";
     }
 
-    @GetMapping("/lista")
-    public String lisarUsuarios(Model model){
-        model.addAttribute("lista", usuarioRepositorio.findAll());
 
-        return "listagem";
-
-    }
 
     @PostMapping
     public String cadastrarUsuario( Usuario u){

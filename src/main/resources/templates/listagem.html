@@ -23,13 +23,14 @@
     <td th:text="${user.telefone}"></td>
     <td th:text="${user.data}"></td>
     <td>
-<!--      <a th:href="@{/filmes/formulario?id={id}(id=${filme.id})}">Editar</a>-->
+<!--      <a th:href="@{/filmes/formulario?id={id}(id=${user.id})}">Editar</a>-->
 
-      <form action="/filmes" method="POST">
+      <form action="/usuarios" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="id" th:value="${user.id}">
         <input type="submit" value="Excluir">
       </form>
+
     </td>
   </tr>
 

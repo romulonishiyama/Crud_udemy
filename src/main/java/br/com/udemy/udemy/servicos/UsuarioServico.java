@@ -14,8 +14,8 @@ public class UsuarioServico {
     private UsuarioRepositorio usuarioRepositorio;
 
     //SELECIONAR USUARIOS
-    public ResponseEntity<?> obterTodosUsuarios(){
-        return new ResponseEntity<>(usuarioRepositorio.findAll(), HttpStatus.OK);
+    public Iterable<Usuario> obterTodosUsuarios(){
+        return usuarioRepositorio.findAll();
     }
     public ResponseEntity<?> obterUsuarioPorId(int id){
         return new ResponseEntity<>(usuarioRepositorio.findById(id), HttpStatus.OK);

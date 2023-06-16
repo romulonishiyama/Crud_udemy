@@ -4,10 +4,12 @@ import br.com.udemy.udemy.modelos.Usuario;
 import br.com.udemy.udemy.servicos.UsuarioServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController
+@Controller
 @RequestMapping("/usuarios")
 public class UsuarioControler {
 
@@ -17,7 +19,8 @@ public class UsuarioControler {
 
     //GET
     @GetMapping
-    public ResponseEntity<?> obterTodosUsuarios(){
+    @ResponseBody
+    public Iterable<Usuario> obterTodosUsuarios(){
         return usuarioServico.obterTodosUsuarios();
     }
 
@@ -25,9 +28,19 @@ public class UsuarioControler {
     public ResponseEntity<?> obterUsuarioPorId(@PathVariable int id){
         return usuarioServico.obterUsuarioPorId(id);
     }
+
+
     @GetMapping("/busca")
     public ResponseEntity<?> obterUsuarioPorId2(@RequestParam(name = "id") int id){
         return usuarioServico.obterUsuarioPorId(id);
+    }
+    @GetMapping("/lista")
+    public String lisarUsuarios(Model model){
+
+        model.addAttribute("lista", usuarioServico.obterTodosUsuarios());
+
+        return "listagem";
+
     }
 
     //POST
@@ -46,8 +59,9 @@ public class UsuarioControler {
 
     //DELETE
     @DeleteMapping
-    public ResponseEntity<?> ddeletarUsuarioPorId(@RequestParam(name = "id") int id){
-        return usuarioServico.deletarUsuarioPorId(id);
+    public String ddeletarUsuarioPorId(@RequestParam(name = "id") int id){
+        usuarioServico.deletarUsuarioPorId(id);
+        return "redirect:/usuarios/lista";
     }
 
 }
