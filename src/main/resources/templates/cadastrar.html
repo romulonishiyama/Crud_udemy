@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://thymelead.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Formulário de Login</title>
+   <style>
+
+       body {
+           font-family: Arial, sans-serif;
+           margin: 20px;
+       }
+
+       h2 {
+           color: #333;
+       }
+
+       label {
+           display: block;
+           margin-bottom: 5px;
+       }
+
+       input[type="text"],
+       input[type="password"],
+       input[type="tel"],
+       input[type="email"] {
+           padding: 5px;
+           margin-bottom: 10px;
+           width: 200px;
+       }
+
+       .email-field {
+           border: 1px solid #ccc;
+       }
+
+       input[type="submit"],
+       button.list-button {
+           padding: 10px 20px;
+           background-color: #333;
+           color: #fff;
+           border: none;
+           cursor: pointer;
+       }
+
+       button.list-button {
+           background-color: #555;
+       }
+
+
+   </style>
+</head>
+<body>
+<h2>Cadastro</h2>
+<form action="/cadastro" method="post">
+    <label for="username">Usuário:</label>
+    <input type="text" id="username" name="nome" required><br><br>
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="senha" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phone">Telefone:</label>
+    <input type="tel" id="phone" name="telefone" required><br><br>
+
+    <input type="submit" value="Enviar">
+    <a href="/cadastro/lista"><button type="button" class="list-button">Listar</button></a>
+
+</form>
+</body>
+</html>
